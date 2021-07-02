@@ -15,6 +15,6 @@ class SearchPage(BasePage):
     def click_on_search_button(self):
         assert self.click_on_search_field_button(*SearchPageLocators.SEARCH_BUTTON), "There's no search button"
     
-    def should_tenzor_be_in_search_results(self):
-        assert self.is_tenzor_in_search_results(*SearchPageLocators.SEARCH_RESULTS), "In the first 5 results there'no link to tenzor.ru"
+    def should_tensor_be_in_search_results(self):
+        assert self.is_tensor_in_search_results(*SearchPageLocators.SEARCH_RESULTS), "In one of the first 5 results there's no link to tensor.ru"
         
