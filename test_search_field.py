@@ -8,7 +8,7 @@ def test_search_field_is_present(browser):
     page.open()
     page.should_be_search_field()
 
-def test_search_suggestions_appeared(browser):
+def test_tensor_in_first_5_links_present(browser):
     link = "https://yandex.ru"
     page = SearchPage(browser, link)
     word = "Тензор"
@@ -16,5 +16,5 @@ def test_search_suggestions_appeared(browser):
     page.input_text_into_search_field(word)
     page.should_be_search_suggestions()
     page.click_on_search_button()
-    page.should_tenzor_be_in_search_results()
+    page.should_tensor_be_in_search_results()
  
