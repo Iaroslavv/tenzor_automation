@@ -30,8 +30,12 @@ class BasePage:
         self.browser.find_element(*SearchPageLocators.SEARCH_TEXT_FIELD).send_keys(input_text)
     
     def click_on_search_field_button(self, how, what):
-        self.browser.implicitly_wait(15)
-        self.browser.find_element(how, what).click()
+        try:
+            self.browser.implicitly_wait(15)
+            self.browser.find_element(how, what).click()
+        except NoSuchElementException:
+            return False
+        return True
     
     def is_element_present(self, how, what):
         """
@@ -40,7 +44,7 @@ class BasePage:
         :param what: what to look for
         """
         try:
-            self.browser.implicitly_wait(25)
+            self.browser.implicitly_wait(20)
             self.browser.find_element(how, what)
         except NoSuchElementException:
             return False
@@ -56,13 +60,12 @@ class BasePage:
             return False
         return len(suggestions_present) > 0
     
-    def is_tenzor_in_search_results(self, how, what):
+    def is_tensor_in_search_results(self, how, what):
         try:
             self.browser.implicitly_wait(5)
             search_results = self.browser.find_elements(how, what)
-            results_links = [link for link in search_results]
-            print(results_links)        
+            results_links = [link.get_attribute("href") for link in search_results]
+            website_link = "tensor.ru"    
         except NoSuchElementException:
             return False
-        print("RESULT LINKS:", results_links)
-        return True
+        return all(website_link in string for string in results_links)
