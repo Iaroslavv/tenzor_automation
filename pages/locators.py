@@ -9,5 +9,5 @@ class SearchPageLocators:
     SEARCH_TEXT_FIELD = (By.CSS_SELECTOR, "#text")
     SEARCH_BUTTON = (By.CSS_SELECTOR, "button[type='submit']")
     SUGGEST_LIST = (By.CSS_SELECTOR, "ul[role='listbox']")
-    SEARCH_RESULTS = (By.CSS_SELECTOR, "li[class='serp-item']")
+    SEARCH_RESULTS = (By.CSS_SELECTOR, "li[class='serp-item'] div[class='Path Organic-Path path organic__path'] a")
     
